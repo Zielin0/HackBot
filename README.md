@@ -30,7 +30,15 @@
   - Events logging: guildCreate and guildDelete
   - Commands logging: Format: [UserName#ID] in \`[serverName]\`: {prefix}[command]
 
-  Example:
+  Examples:
+
+  If someone tries to use the _ownerOnly_ command:
+
+  ```yaml
+  2021-10-10 16:08:54 - warn [index.js]: 0h_P10t3r#3743 in `Zielino's Sever`: Tried to use *ownerOnly* command: ;eval
+  ```
+
+  If it is a normal command:
 
   ```yaml
   2021-10-10 00:12:49 - warn [index.js]: Zielino#7342 in `Zielino's Sever`: ;eval
