@@ -82,19 +82,20 @@ No known issues at the moment.
 
 ## Commands table
 
-| Name       | Category | Usage                   | Examples                             |
-| ---------- | :------- | :---------------------- | :----------------------------------- |
-| Eval       | Owner    | ;eval [`code`]          | ;eval console.log('Hello, HackBot!') |
-| GuildBan   | Owner    | ;guildban [`guildId`]   | ;guildban 694865553835163648         |
-| Invite     | Owner    | ;invite [`guildId`]     | ;invite 694865553835163648           |
-| LeaveGuild | Owner    | ;leaveguild [`guildId`] | ;leaveguild 694865553835163648       |
-| Neofetch   | Owner    | ;neofetch               | ;neofetch                            |
-| Servers    | Owner    | ;servers                | ;servers                             |
-| Shutdown   | Owner    | ;shutdown               | ;shutdown                            |
-| UnGuildBan | Owner    | ;unguildban [`guildId`] | ;unguildban 694865553835163648       |
-| Whois      | Hack     | ;whois [`domain`]       | ;whois zielinus.gq                   |
-| Redirect   | Hack     | ;redirect [`url`]       | ;redirect https://dc.zielinus.gq     |
-| PingIp     | Hack     | ;pingip [`ip`]          | ;pingip 8.8.8.8                      |
+| Name         | Category | Usage                   | Examples                             |
+| ------------ | :------- | :---------------------- | :----------------------------------- |
+| Eval         | Owner    | ;eval [`code`]          | ;eval console.log('Hello, HackBot!') |
+| GuildBan     | Owner    | ;guildban [`guildId`]   | ;guildban 694865553835163648         |
+| Invite       | Owner    | ;invite [`guildId`]     | ;invite 694865553835163648           |
+| LeaveGuild   | Owner    | ;leaveguild [`guildId`] | ;leaveguild 694865553835163648       |
+| Neofetch     | Owner    | ;neofetch               | ;neofetch                            |
+| Servers      | Owner    | ;servers                | ;servers                             |
+| Shutdown     | Owner    | ;shutdown               | ;shutdown                            |
+| UnGuildBan   | Owner    | ;unguildban [`guildId`] | ;unguildban 694865553835163648       |
+| Whois        | Hack     | ;whois [`domain`]       | ;whois zielinus.gq                   |
+| Redirect     | Hack     | ;redirect [`url`]       | ;redirect https://dc.zielinus.gq     |
+| PingIp       | Hack     | ;pingip [`ip`]          | ;pingip 8.8.8.8                      |
+| GenBotInvite | Hack     | ;genbotinvite [`botId`] | ;genbotinvite 886585147573555210     |
 
 ## License
 
