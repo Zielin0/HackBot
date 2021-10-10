@@ -30,18 +30,19 @@ module.exports = class GenBotInviteCommand extends BaseCommand {
       })
     }
     const embed = new MessageEmbed()
+      .setTitle('Bot Invite')
       .addField(
-        '**Invite:**',
-        `[Permissions (Admin)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=8)`,
+        '**Invite (Admin):**',
+        `[Permissions (8)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=8)`,
         true
       )
       .addField(
-        '**Invite:**',
-        `[Permissions (Basic)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=403008599)`,
+        '**Invite (Basic):**',
+        `[Permissions (403008599)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=403008599)`,
         true
       )
       .addField(
-        '**Invite:**',
+        '**Invite (None):**',
         `[Permissions (0)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=0)`,
         true
       )
