@@ -1,32 +1,31 @@
-/* eslint-disable class-methods-use-this */
-const BaseCommand = require('../../utils/structures/BaseCommand')
-const { MessageEmbed } = require('discord.js')
+const BaseCommand = require('../../utils/structures/BaseCommand');
+const { MessageEmbed } = require('discord.js');
 
-const rgx = /^(?:<@!?)?(\d+)>?$/
+const rgx = /^(?:<@!?)?(\d+)>?$/;
 
 module.exports = class LeaveGuildCommand extends BaseCommand {
   constructor() {
-    super('leave', 'Owner', [], true)
+    super('leave', 'Owner', [], true);
   }
 
   async run(client, message, args) {
-    const guildId = args[0]
+    const guildId = args[0];
     if (!rgx.test(guildId)) {
       return message.reply({
         embeds: [new MessageEmbed().setTitle('❗ Provide a valid guild ID').setColor(0x2f3136)],
-        allowedMentions: { repliedUser: false }
-      })
+        allowedMentions: { repliedUser: false },
+      });
     }
 
-    const guild = client.guilds.cache.get(guildId)
+    const guild = client.guilds.cache.get(guildId);
     if (!guild) {
       return message.reply({
         embeds: [new MessageEmbed().setTitle('❗ Cannot find a guild').setColor(0x2f3136)],
-        allowedMentions: { repliedUser: false }
-      })
+        allowedMentions: { repliedUser: false },
+      });
     }
 
-    await guild.leave()
+    await guild.leave();
     const embed = new MessageEmbed()
       .setTitle('💎 Left Server')
       .setDescription(
@@ -34,7 +33,7 @@ module.exports = class LeaveGuildCommand extends BaseCommand {
         **Server Name:** ${guild.name}
       `
       )
-      .setColor(0x2f3136)
-    message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } })
+      .setColor(0x2f3136);
+    message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
   }
-}
+};

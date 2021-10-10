@@ -1,20 +1,13 @@
-/* eslint-disable max-lines-per-function */
-/* eslint-disable new-cap */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
-/* eslint-disable global-require */
-/* eslint-disable no-control-regex */
-/* eslint-disable no-useless-escape */
-const { MessageEmbed } = require('discord.js')
-const BaseCommand = require('../../utils/structures/BaseCommand')
+const { MessageEmbed } = require('discord.js');
+const BaseCommand = require('../../utils/structures/BaseCommand');
 
 module.exports = class NeofetchCommand extends BaseCommand {
   constructor() {
-    super('neofetch', 'Owner', [], true)
+    super('neofetch', 'Owner', [], true);
   }
 
   run(client, message, args) {
-    const si = require('systeminformation')
+    const si = require('systeminformation');
 
     si.get({
       users: 'user',
@@ -23,12 +16,12 @@ module.exports = class NeofetchCommand extends BaseCommand {
       time: 'uptime',
       graphics: 'displays, controllers',
       cpu: 'manufacturer, brand, cores, speedMax',
-      mem: 'total, used'
+      mem: 'total, used',
     })
       .then(data => {
-        const header = data.users[0].user + '@' + data.osInfo.hostname
-        const upHr = Math.floor(data.time.uptime / 3600)
-        const upMin = Math.floor(data.time.uptime / 60 - upHr * 60)
+        const header = data.users[0].user + '@' + data.osInfo.hostname;
+        const upHr = Math.floor(data.time.uptime / 3600);
+        const upMin = Math.floor(data.time.uptime / 60 - upHr * 60);
 
         const output =
           header +
@@ -76,24 +69,24 @@ module.exports = class NeofetchCommand extends BaseCommand {
           Math.floor(data.mem.used / 1024 / 1024) +
           'MiB / ' +
           Math.floor(data.mem.total / 1024 / 1024) +
-          'MiB'
+          'MiB';
 
         message.reply({
           embeds: [
             new MessageEmbed()
               .setTitle('Neofetch')
               .setDescription('```' + output + '```', { code: 'yaml' })
-              .setColor(0x2f3136)
+              .setColor(0x2f3136),
           ],
-          allowedMentions: { repliedUser: false }
-        })
+          allowedMentions: { repliedUser: false },
+        });
       })
       .catch(error => {
         const embed = new MessageEmbed()
           .setTitle('❗ An error ocurred')
           .addField('Error message', error.message)
-          .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``)
-        message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } })
-      })
+          .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``);
+        message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+      });
   }
-}
+};

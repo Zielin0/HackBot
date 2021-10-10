@@ -128,7 +128,7 @@ This project is under the [MIT](./LICENSE) license.
   - [x] ~~_Whois command_~~ [09-10-2021]
   - [x] ~~_Redirect command_~~ [09-10-2021]
   - [x] ~~_Ping command_~~ [09-10-2021]
-- [ ] Remove all eslint-ignore comments and fix linting
+- [x] ~~_Remove all eslint-ignore comments and fix linting_~~ [10-10-2021] *finally after 1.5h*
 
 <br />
 <br />

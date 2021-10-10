@@ -1,16 +1,15 @@
-/* eslint-disable class-methods-use-this */
-const { MessageEmbed } = require('discord.js')
-const BaseEvent = require('../../utils/structures/BaseEvent')
+const { MessageEmbed } = require('discord.js');
+const BaseEvent = require('../../utils/structures/BaseEvent');
 
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
-    super('guildCreate')
+    super('guildCreate');
   }
 
   run(client, guild) {
-    client.logger.info(`${client.user.username} has joined \`${guild.name}\``)
-    client.db.settings.insertRow.run(guild.id)
-    const guildBan = client.db.settings.selectGuildBan.pluck().get(guild.id)
+    client.logger.info(`${client.user.username} has joined \`${guild.name}\``);
+    client.db.settings.insertRow.run(guild.id);
+    const guildBan = client.db.settings.selectGuildBan.pluck().get(guild.id);
     if (guildBan === 1) {
       guild.channels.cache
         .filter(c => c.type === 'GUILD_TEXT')
@@ -20,13 +19,13 @@ module.exports = class ReadyEvent extends BaseEvent {
             new MessageEmbed()
               .setTitle('Guild Ban')
               .setDescription('Leaving server in 2.5s because of *guild ban*...')
-              .setColor(0x2f3136)
-          ]
-        })
+              .setColor(0x2f3136),
+          ],
+        });
       setTimeout(() => {
-        guild.leave()
-      }, 2500)
-      client.logger.verbose(`Left \`[${guild.name}](${guild.id})\` because of guild ban`)
+        guild.leave();
+      }, 2500);
+      client.logger.verbose(`Left \`[${guild.name}](${guild.id})\` because of guild ban`);
     }
   }
-}
+};

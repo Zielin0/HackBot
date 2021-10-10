@@ -1,8 +1,4 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable max-lines-per-function */
-/* eslint-disable max-params */
-/* eslint-disable valid-jsdoc */
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 
 /**
  * Dragon's Reaction Menu class
@@ -31,7 +27,7 @@ module.exports = class ReactionMenu {
       '◀️': this.previous.bind(this),
       '▶️': this.next.bind(this),
       '⏩': this.last.bind(this),
-      '⏹️': this.stop.bind(this)
+      '⏹️': this.stop.bind(this),
     },
     timeout = 120000
   ) {
@@ -39,94 +35,94 @@ module.exports = class ReactionMenu {
      * The Dragon Client
      * @type {Client}
      */
-    this.client = client
+    this.client = client;
 
     /**
      * The text channel
      * @type {TextChannel}
      */
-    this.channel = channel
+    this.channel = channel;
 
     /**
      * The member ID snowflake
      * @type {string}
      */
-    this.memberId = member.id
+    this.memberId = member.id;
 
     /**
      * The embed passed to the Reaction Menu
      * @type {MessageEmbed}
      */
-    this.embed = embed
+    this.embed = embed;
 
     /**
      * JSON from the embed
      * @type {Object}
      */
-    this.json = this.embed.toJSON()
+    this.json = this.embed.toJSON();
 
     /**
      * The array to be iterated over
      * @type {Array}
      */
-    this.arr = arr
+    this.arr = arr;
 
     /**
      * The size of each array window
      * @type {int}
      */
-    this.interval = interval
+    this.interval = interval;
 
     /**
      * The current array window start
      * @type {int}
      */
-    this.current = 0
+    this.current = 0;
 
     /**
      * The max length of the array
      * @type {int}
      */
-    this.max = this.arr ? arr.length : null
+    this.max = this.arr ? arr.length : null;
 
     /**
      * The reactions for menu
      * @type {Object}
      */
-    this.reactions = reactions
+    this.reactions = reactions;
 
     /**
      * The emojis used as keys
      * @type {Array<string>}
      */
-    this.emojis = Object.keys(this.reactions)
+    this.emojis = Object.keys(this.reactions);
 
     /**
      * The collector timeout
      * @type {int}
      */
-    this.timeout = timeout
+    this.timeout = timeout;
 
-    const first = new MessageEmbed(this.json)
-    const description = this.arr ? this.arr.slice(this.current, this.interval) : null
+    const first = new MessageEmbed(this.json);
+    const description = this.arr ? this.arr.slice(this.current, this.interval) : null;
     if (description) {
       first
         .setTitle(
           this.embed.title + ' ' + this.client.utils.getRange(this.arr, this.current, this.interval)
         )
-        .setDescription(description)
+        .setDescription(description);
     }
 
-    this.channel.send(first).then((message) => {
+    this.channel.send(first).then(message => {
       /**
        * The menu message
        * @type {Message}
        */
-      this.message = message
+      this.message = message;
 
-      this.addReactions()
-      this.createCollector()
-    })
+      this.addReactions();
+      this.createCollector();
+    });
   }
 
   /**
@@ -134,7 +130,7 @@ module.exports = class ReactionMenu {
    */
   async addReactions() {
     for (const emoji of this.emojis) {
-      await this.message.react(emoji)
+      await this.message.react(emoji);
     }
   }
 
@@ -148,29 +144,29 @@ module.exports = class ReactionMenu {
         return (
           (this.emojis.includes(reaction.emoji.name) || this.emojis.includes(reaction.emoji.id)) &&
           user.id === this.memberId
-        )
+        );
       },
       { time: this.timeout }
-    )
+    );
 
     // On collect
-    collector.on('collect', async (reaction) => {
-      let newPage = this.reactions[reaction.emoji.name] || this.reactions[reaction.emoji.id]
+    collector.on('collect', async reaction => {
+      let newPage = this.reactions[reaction.emoji.name] || this.reactions[reaction.emoji.id];
       if (typeof newPage === 'function') {
-        newPage = newPage()
+        newPage = newPage();
       }
       if (newPage) {
-        await this.message.edit(newPage)
+        await this.message.edit(newPage);
       }
-      await reaction.users.remove(this.memberId)
-    })
+      await reaction.users.remove(this.memberId);
+    });
 
     // On end
     collector.on('end', () => {
-      this.message.reactions.removeAll()
-    })
+      this.message.reactions.removeAll();
+    });
 
-    this.collector = collector
+    this.collector = collector;
   }
 
   /**
@@ -178,14 +174,14 @@ module.exports = class ReactionMenu {
    */
   first() {
     if (this.current === 0) {
-      return
+      return;
     }
-    this.current = 0
+    this.current = 0;
     return new MessageEmbed(this.json)
       .setTitle(
         this.embed.title + ' ' + this.client.utils.getRange(this.arr, this.current, this.interval)
       )
-      .setDescription(this.arr.slice(this.current, this.current + this.interval))
+      .setDescription(this.arr.slice(this.current, this.current + this.interval));
   }
 
   /**
@@ -193,62 +189,62 @@ module.exports = class ReactionMenu {
    */
   previous() {
     if (this.current === 0) {
-      return
+      return;
     }
-    this.current -= this.interval
+    this.current -= this.interval;
     if (this.current < 0) {
-      this.current = 0
+      this.current = 0;
     }
     return new MessageEmbed(this.json)
       .setTitle(
         this.embed.title + ' ' + this.client.utils.getRange(this.arr, this.current, this.interval)
       )
-      .setDescription(this.arr.slice(this.current, this.current + this.interval))
+      .setDescription(this.arr.slice(this.current, this.current + this.interval));
   }
 
   /**
    * Goes to the next array interval
    */
   next() {
-    const cap = this.max - (this.max % this.interval)
+    const cap = this.max - (this.max % this.interval);
     if (this.current === cap || this.current + this.interval === this.max) {
-      return
+      return;
     }
-    this.current += this.interval
+    this.current += this.interval;
     if (this.current >= this.max) {
-      this.current = cap
+      this.current = cap;
     }
-    const max = this.current + this.interval >= this.max ? this.max : this.current + this.interval
+    const max = this.current + this.interval >= this.max ? this.max : this.current + this.interval;
     return new MessageEmbed(this.json)
       .setTitle(
         this.embed.title + ' ' + this.client.utils.getRange(this.arr, this.current, this.interval)
       )
-      .setDescription(this.arr.slice(this.current, max))
+      .setDescription(this.arr.slice(this.current, max));
   }
 
   /**
    * Goes to the last array interval
    */
   last() {
-    const cap = this.max - (this.max % this.interval)
+    const cap = this.max - (this.max % this.interval);
     if (this.current === cap || this.current + this.interval === this.max) {
-      return
+      return;
     }
-    this.current = cap
+    this.current = cap;
     if (this.current === this.max) {
-      this.current -= this.interval
+      this.current -= this.interval;
     }
     return new MessageEmbed(this.json)
       .setTitle(
         this.embed.title + ' ' + this.client.utils.getRange(this.arr, this.current, this.interval)
       )
-      .setDescription(this.arr.slice(this.current, this.max))
+      .setDescription(this.arr.slice(this.current, this.max));
   }
 
   /**
    * Stops the collector
    */
   stop() {
-    this.collector.stop()
+    this.collector.stop();
   }
-}
+};

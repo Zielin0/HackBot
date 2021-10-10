@@ -1,31 +1,28 @@
-/* eslint-disable max-lines-per-function */
-/* eslint-disable arrow-parens */
-/* eslint-disable class-methods-use-this */
-const BaseCommand = require('../../utils/structures/BaseCommand')
-const { MessageEmbed } = require('discord.js')
+const BaseCommand = require('../../utils/structures/BaseCommand');
+const { MessageEmbed } = require('discord.js');
 
-const rgx = /^(?:<@!?)?(\d+)>?$/
+const rgx = /^(?:<@!?)?(\d+)>?$/;
 
 module.exports = class InviteCommand extends BaseCommand {
   constructor() {
-    super('invite', 'Owner', [], true)
+    super('invite', 'Owner', [], true);
   }
 
   async run(client, message, args) {
-    const guildId = args[0]
+    const guildId = args[0];
     if (!guildId) {
       const embed = new MessageEmbed()
         .setTitle('❌ Error')
         .setDescription('Provide server ID')
-        .setColor(0x2f3136)
-      return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } })
+        .setColor(0x2f3136);
+      return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
 
     if (!rgx.test(guildId)) {
       return message.reply({
         embeds: [new MessageEmbed().setTitle('❗ Provide a valid server ID').setColor(0x2f3136)],
-        allowedMentions: { repliedUser: false }
-      })
+        allowedMentions: { repliedUser: false },
+      });
     }
 
     try {
@@ -44,14 +41,14 @@ module.exports = class InviteCommand extends BaseCommand {
               `**Invite URL:** [https://discord.gg/${invite.code}](https://discord.gg/${invite.code})
               **Server ID:** ${guildId}`
             )
-            .setColor(0x2f3136)
+            .setColor(0x2f3136);
           message.reply({
             embeds: [embed],
             allowedMentions: {
-              repliedUser: false
-            }
-          })
-        })
+              repliedUser: false,
+            },
+          });
+        });
     } catch (error) {
       const embed = new MessageEmbed()
         .setTitle('❗ Failed to create invite')
@@ -59,8 +56,8 @@ module.exports = class InviteCommand extends BaseCommand {
           `Server: \`${client.guilds.cache.get(guildId).name}\`\nServer ID: ${guildId}`
         )
         .addField('Error message', error.message)
-        .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``)
-      message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } })
+        .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``);
+      message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
   }
-}
+};

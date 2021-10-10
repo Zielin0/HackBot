@@ -26,18 +26,22 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "nodemon": "^2.0.13",
-    "prettier": "^2.4.1",
     "cz-conventional-changelog": "3.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn precommit"
+    }
   },
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "start": "node ./src/index.js",
-    "lint": "eslint src/**/*.js",
-    "prettier": "prettier src/**/*.js",
-    "prettier:check": "yarn prettier --check"
+    "lint": "eslint --fix *.js",
+    "precommit": "eslint *.js"
   },
   "config": {
     "commitizen": {

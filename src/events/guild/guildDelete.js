@@ -1,12 +1,11 @@
-/* eslint-disable class-methods-use-this */
-const BaseEvent = require('../../utils/structures/BaseEvent')
+const BaseEvent = require('../../utils/structures/BaseEvent');
 
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
-    super('guildDelete')
+    super('guildDelete');
   }
 
   run(client, guild) {
-    client.logger.info(`${client.user.username} has left \`${guild.name}\``)
+    client.logger.info(`${client.user.username} has left \`${guild.name}\``);
   }
-}
+};

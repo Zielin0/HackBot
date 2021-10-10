@@ -1,9 +1,7 @@
-/* eslint-disable global-require */
+const { Client, Intents } = require('discord.js');
+const { registerCommands, registerEvents } = require('./utils/registry');
 
-const { Client, Intents } = require('discord.js')
-const { registerCommands, registerEvents } = require('./utils/registry')
-// eslint-disable-next-line import/no-unresolved
-const config = require('../config.json')
+const { prefix, token } = require('../config.json');
 const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -23,19 +21,17 @@ const client = new Client({
     Intents.FLAGS.DIRECT_MESSAGE_TYPING
   ],
   ws: { properties: { $browser: 'Discord iOS' } }
-})
+});
 
-global.__basedir = __dirname
-global.ImageURLOptions = { dynamic: true, size: 1024, format: 'png' }
-
-// eslint-disable-next-line semi-style
-;(async () => {
-  client.commands = new Map()
-  client.events = new Map()
-  client.prefix = config.prefix
-  client.logger = require('./utils/logger')
-  client.db = require('./utils/db')
-  await registerCommands(client, '../commands')
-  await registerEvents(client, '../events')
-  await client.login(config.token)
-})()
+global.__basedir = __dirname;
+global.ImageURLOptions = { dynamic: true, size: 1024, format: 'png' };
+(async () => {
+  client.commands = new Map();
+  client.events = new Map();
+  client.prefix = prefix;
+  client.logger = require('./utils/logger');
+  client.db = require('./utils/db');
+  await registerCommands(client, '../commands');
+  await registerEvents(client, '../events');
+  await client.login(token);
+})();

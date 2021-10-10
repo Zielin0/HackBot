@@ -1,12 +1,11 @@
-/* eslint-disable class-methods-use-this */
-const BaseEvent = require('../../utils/structures/BaseEvent')
+const BaseEvent = require('../../utils/structures/BaseEvent');
 
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
-    super('warn')
+    super('warn');
   }
 
   run(client, info) {
-    client.logger.warn(info)
+    client.logger.warn(info);
   }
-}
+};

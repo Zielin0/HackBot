@@ -1,32 +1,28 @@
-/* eslint-disable max-lines-per-function */
-/* eslint-disable no-eval */
-/* eslint-disable global-require */
-const BaseCommand = require('../../utils/structures/BaseCommand')
-const { MessageEmbed } = require('discord.js')
+const BaseCommand = require('../../utils/structures/BaseCommand');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = class EvalCommand extends BaseCommand {
   constructor() {
-    super('eval', 'Owner', [], true)
+    super('eval', 'Owner', [], true);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   run(client, message, args) {
-    const input = args.join(' ')
+    const input = args.join(' ');
 
     if (!input) {
       const embed = new MessageEmbed()
         .setTitle('❌ Error')
         .setDescription('Provide code to eval')
-        .setColor(0x2f3136)
-      return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } })
+        .setColor(0x2f3136);
+      return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
 
     if (!input.toLowerCase().includes('token')) {
-      const embed = new MessageEmbed()
+      const embed = new MessageEmbed();
       try {
-        let output = eval(input)
+        let output = eval(input);
         if (typeof output !== 'string') {
-          output = require('util').inspect(output, { depth: 0 })
+          output = require('util').inspect(output, { depth: 0 });
         }
 
         embed
@@ -38,7 +34,7 @@ module.exports = class EvalCommand extends BaseCommand {
             'Output',
             `\`\`\`js\n${output.length > 1024 ? 'Too large to display.' : output}\`\`\``
           )
-          .setColor(0x2f3136)
+          .setColor(0x2f3136);
       } catch (err) {
         embed
           .addField(
@@ -49,11 +45,11 @@ module.exports = class EvalCommand extends BaseCommand {
             'Output',
             `\`\`\`js\n${err.length > 1024 ? 'Too large to display.' : err}\`\`\``
           )
-          .setColor(0x2f3136)
+          .setColor(0x2f3136);
       }
-      message.channel.send({ embeds: [embed] })
+      message.channel.send({ embeds: [embed] });
     } else {
-      message.channel.send('(╯°□°)╯︵ ┻━┻ ')
+      message.channel.send('(╯°□°)╯︵ ┻━┻ ');
     }
   }
-}
+};
