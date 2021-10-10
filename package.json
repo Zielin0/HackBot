@@ -1,0 +1,47 @@
+{
+  "name": "hackbot",
+  "version": "1.0.0",
+  "description": "HackBot - Discord Bot with Network commands such as Redirect checking",
+  "main": "index.js",
+  "author": "Zielino",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zielin0/HackBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zielin0/HackBot/issues"
+  },
+  "homepage": "https://github.com/Zielin0/HackBot#readme",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "better-sqlite3": "^7.4.3",
+    "common-tags": "^1.8.0",
+    "discord.js": "^13.1.0",
+    "husky": "^7.0.2",
+    "ping": "^0.4.1",
+    "request": "^2.88.2",
+    "systeminformation": "^5.9.4",
+    "whoiser": "^1.13.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1",
+    "cz-conventional-changelog": "3.3.0"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
+    "lint": "eslint src/**/*.js",
+    "prettier": "prettier src/**/*.js",
+    "prettier:check": "yarn prettier --check"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

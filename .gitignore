@@ -1,0 +1,8 @@
+# Ignore list for HackBot project
+node_modules/
+yarn.lock
+yarn-error.log
+data/
+images/
+logs/
+config.json
