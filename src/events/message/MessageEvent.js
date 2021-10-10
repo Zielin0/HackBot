@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
 const { MessageEmbed } = require('discord.js')
 const BaseEvent = require('../../utils/structures/BaseEvent')
-const { oneLine } = require('common-tags')
 const { ownerId } = require('../../../config.json')
 
 module.exports = class MessageEvent extends BaseEvent {
@@ -49,7 +48,8 @@ module.exports = class MessageEvent extends BaseEvent {
       const embed = new MessageEmbed()
         .setAuthor(client.user.username, client.user.avatarURL({ size: 1024, dynamic: true }))
         .setThumbnail(client.user.displayAvatarURL({ size: 512 }))
-        .setDescription(`
+        .setDescription(
+          `
 	  HackBot - Discord Bot with Network commands such as Redirect checking\n
           **Links:
           [Support](https://discord.gg/upmNHg5U) | [Invite](https://discord.com/api/oauth2/authorize?client_id=886585147573555210&permissions=403008599&scope=bot)**
