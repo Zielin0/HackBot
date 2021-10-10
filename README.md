@@ -46,8 +46,8 @@
 
 ## Requirements
 
-- Node.js v16.6.1 or higher
-- yarn v1.22.11 or higher
+- Node.js v16.11.0 or higher (Node.js v16.11.x should work as well)
+- Yarn v1.22.15 or higher (Yarn v1.22.x should work as well)
 
 ## Installing & running
 
