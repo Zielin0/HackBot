@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://cdn.discordapp.com/avatars/886585147573555210/b290615a286c8b355947fe8cdc6197eb.png?size=256" alt="logo" width="200">
   <br>
-  <img src="https://img.shields.io/badge/language-333?logo=javascript&style=flat" alt="badge-lang">
+  <img src="https://img.shields.io/badge/language-gray?logo=javascript&style=flat" alt="badge-lang">
   <img src="https://img.shields.io/github/issues/Zielin0/HackBot?style=flat" alt="badge-issues">
   <img src="https://img.shields.io/github/forks/Zielin0/HackBot?style=flat" alt="badge-forks">
   <img src="https://img.shields.io/github/stars/Zielin0/HackBot?style=flat" alt="badge-stars">
