@@ -41,7 +41,7 @@
   If it is a normal command:
 
   ```yaml
-  2021-10-10 00:12:49 - warn [index.js]: Zielino#7342 in `Zielino's Sever`: ;eval
+  2021-10-10 16:14:33 - warn [index.js]: Zielino#7342 in `Zielino's Sever`: ;redirect
   ```
 
 ## Requirements
