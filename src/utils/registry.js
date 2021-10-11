@@ -45,5 +45,5 @@ async function registerEvents(client, dir = '') {
 
 module.exports = {
   registerCommands,
-  registerEvents
+  registerEvents,
 };

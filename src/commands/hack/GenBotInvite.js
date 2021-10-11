@@ -2,8 +2,8 @@
  *  @type {AUTHOR} - 0h_P10t3r#3743
  */
 
-const BaseCommand = require('../../utils/structures/BaseCommand');
 const { MessageEmbed } = require('discord.js');
+const BaseCommand = require('../../utils/structures/BaseCommand');
 
 const rgx = /^(?:<@!?)?(\d+)>?$/;
 
@@ -12,7 +12,7 @@ module.exports = class GenBotInviteCommand extends BaseCommand {
     super('genbotinvite', 'Hack', ['gbi']);
   }
 
-  run(client, message, args) {
+  run(_client, message, args) {
     const botId = args[0];
     if (!botId) {
       const embed = new MessageEmbed()
@@ -35,6 +35,7 @@ module.exports = class GenBotInviteCommand extends BaseCommand {
         `[Permissions (8)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=8)`,
         true
       )
+
       .addField(
         '**Invite (Basic):**',
         `[Permissions (403008599)](https://discord.com/oauth2/authorize?client_id=${botId}&scope=bot+applications.commands&permissions=403008599)`,

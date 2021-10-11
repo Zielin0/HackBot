@@ -8,9 +8,7 @@ module.exports = class ServersCommand extends BaseCommand {
   }
 
   run(client, message) {
-    const servers = client.guilds.cache.map(guild => {
-      return `\`${guild.id}\` - **${guild.name}** - *${guild.members.cache.size}* user(s)`;
-    });
+    const servers = client.guilds.cache.map((guild) => `\`${guild.id}\` - **${guild.name}** - *${guild.members.cache.size}* user(s)`);
     const embed = new MessageEmbed().setTitle('ServerList').setColor(0x2f3136);
 
     if (servers.length <= 10) {

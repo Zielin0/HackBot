@@ -26,11 +26,8 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.2",
-    "nodemon": "^2.0.13",
-    "cz-conventional-changelog": "3.3.0"
+    "cz-conventional-changelog": "3.3.0",
+    "nodemon": "^2.0.13"
   },
   "husky": {
     "hooks": {
@@ -39,9 +36,7 @@
   },
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js",
-    "lint": "eslint --fix *.js",
-    "precommit": "eslint *.js"
+    "start": "node ./src/index.js"
   },
   "config": {
     "commitizen": {
