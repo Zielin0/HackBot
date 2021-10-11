@@ -24,7 +24,7 @@ module.exports = class WhoisCommand extends BaseCommand {
     if (!input) {
       const embed = new MessageEmbed()
         .setTitle('❌ Error')
-        .setDescription('Provide domain to lookup')
+        .setDescription('Provide an URL')
         .setColor(0x2f3136);
       return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
