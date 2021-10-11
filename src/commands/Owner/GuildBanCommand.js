@@ -1,5 +1,5 @@
-const BaseCommand = require('../../utils/structures/BaseCommand');
 const { MessageEmbed } = require('discord.js');
+const BaseCommand = require('../../utils/structures/BaseCommand');
 
 const rgx = /^(?:<@!?)?(\d+)>?$/;
 

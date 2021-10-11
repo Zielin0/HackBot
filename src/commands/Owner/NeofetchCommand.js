@@ -19,63 +19,32 @@ module.exports = class NeofetchCommand extends BaseCommand {
       mem: 'total, used',
     })
       .then(data => {
-        const header = data.users[0].user + '@' + data.osInfo.hostname;
+        const header = `${data.users[0].user}@${data.osInfo.hostname}`;
         const upHr = Math.floor(data.time.uptime / 3600);
         const upMin = Math.floor(data.time.uptime / 60 - upHr * 60);
 
         const output =
-          header +
+          `${header}\n${'-'.repeat(header.length)}\n` +
+          `OS: ${data.osInfo.distro} ${data.osInfo.release} ${data.osInfo.arch}\n` +
+          `Host: ${data.system.model} ${data.system.version}\n` +
+          `Kernel: ${data.osInfo.kernel}\n` +
+          `Uptime: ${upHr} hour(s), ${upMin} min(s)` +
           '\n' +
-          '-'.repeat(header.length) +
+          `Resolution: ${data.graphics.displays
+            .map(x => `${x.resolutionX}x${x.resolutionY}`)
+            .join(', ')}\n` +
+          `CPU: ${data.cpu.manufacturer} ${data.cpu.brand} (${data.cpu.cores}) @ ${data.cpu.speedMax}GHz` +
           '\n' +
-          'OS: ' +
-          data.osInfo.distro +
-          ' ' +
-          data.osInfo.release +
-          ' ' +
-          data.osInfo.arch +
-          '\n' +
-          'Host: ' +
-          data.system.model +
-          ' ' +
-          data.system.version +
-          '\n' +
-          'Kernel: ' +
-          data.osInfo.kernel +
-          '\n' +
-          'Uptime: ' +
-          upHr +
-          ' hour(s), ' +
-          upMin +
-          ' min(s)' +
-          '\n' +
-          'Resolution: ' +
-          data.graphics.displays.map(x => x.resolutionX + 'x' + x.resolutionY).join(', ') +
-          '\n' +
-          'CPU: ' +
-          data.cpu.manufacturer +
-          ' ' +
-          data.cpu.brand +
-          ' (' +
-          data.cpu.cores +
-          ') @ ' +
-          data.cpu.speedMax +
-          'GHz' +
-          '\n' +
-          'GPU: ' +
-          data.graphics.controllers.map(x => x.vendor + ' ' + x.model).join(', ') +
-          '\n' +
-          'Memory: ' +
-          Math.floor(data.mem.used / 1024 / 1024) +
-          'MiB / ' +
-          Math.floor(data.mem.total / 1024 / 1024) +
-          'MiB';
+          `GPU: ${data.graphics.controllers.map(x => `${x.vendor} ${x.model}`).join(', ')}\n` +
+          `Memory: ${Math.floor(data.mem.used / 1024 / 1024)}MiB / ${Math.floor(
+            data.mem.total / 1024 / 1024
+          )}MiB`;
 
         message.reply({
           embeds: [
             new MessageEmbed()
               .setTitle('Neofetch')
-              .setDescription('```' + output + '```', { code: 'yaml' })
+              .setDescription(`\`\`\`${output}\`\`\``, { code: 'yaml' })
               .setColor(0x2f3136),
           ],
           allowedMentions: { repliedUser: false },

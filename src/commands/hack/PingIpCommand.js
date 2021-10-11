@@ -11,7 +11,7 @@ module.exports = class PingIpCommand extends BaseCommand {
     super('ping-ip', 'Hack', ['pingip', 'pip']);
   }
 
-  async run(client, message, args) {
+  async run(_client, message, args) {
     const input = args.join(' ');
 
     if (!regex.test(input)) {
@@ -30,7 +30,7 @@ module.exports = class PingIpCommand extends BaseCommand {
     }
 
     try {
-      await ping.sys.probe(input, function (isAlive) {
+      ping.sys.probe(input, function (isAlive) {
         const msg = isAlive ? `Host ${input} *is alive*` : `Host ${input} *is dead*`;
         const embed = new MessageEmbed()
           .setTitle('Ping IP')
