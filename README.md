@@ -117,7 +117,6 @@ This project is under the [MIT](./LICENSE) license.
 - [x] ~~_Implementing Database (better-sqlite3)_~~ [30-09-2021]
 - [x] ~~_Owne Commands_~~ [12-10-2021]
   - [x] ~~_Eval_~~ [28-09-2021]
-  - ~~_[ ] Shell_~~
   - [x] ~~_Shutdown_~~ [28-09-2021]
   - [x] ~~_Servers_~~ [28-09-2021]
   - [x] ~~_Invite_~~ [28-09-2021]
