@@ -115,9 +115,9 @@ This project is under the [MIT](./LICENSE) license.
 - [x] ~~_Emojis_~~
 - [x] ~~_Implementing ownerOnly property for commands_~~ [28-09-2021]
 - [x] ~~_Implementing Database (better-sqlite3)_~~ [30-09-2021]
-- [ ] Owner Commands
+- [x] ~~_Owne Commands_~~ [12-10-2021]
   - [x] ~~_Eval_~~ [28-09-2021]
-  - [ ] Shell
+  - ~~_[ ] Shell_~~
   - [x] ~~_Shutdown_~~ [28-09-2021]
   - [x] ~~_Servers_~~ [28-09-2021]
   - [x] ~~_Invite_~~ [28-09-2021]
@@ -128,7 +128,6 @@ This project is under the [MIT](./LICENSE) license.
   - [x] ~~_Whois command_~~ [09-10-2021]
   - [x] ~~_Redirect command_~~ [09-10-2021]
   - [x] ~~_Ping command_~~ [09-10-2021]
-- [x] ~~_Remove all eslint-ignore comments and fix linting_~~ [10-10-2021] *finally after 1.5h*
 
 <br />
 <br />
