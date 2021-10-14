@@ -127,6 +127,7 @@ This project is under the [MIT](./LICENSE) license.
   - [x] ~~_Whois command_~~ [09-10-2021]
   - [x] ~~_Redirect command_~~ [09-10-2021]
   - [x] ~~_Ping command_~~ [09-10-2021]
+- [ ] Help Command
 
 <br />
 <br />
