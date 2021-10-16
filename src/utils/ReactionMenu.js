@@ -1,8 +1,5 @@
 const { MessageEmbed } = require('discord.js');
 
-/**
- * Dragon's Reaction Menu class
- */
 module.exports = class ReactionMenu {
   /**
    * Create new ReactionMenu
