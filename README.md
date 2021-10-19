@@ -74,7 +74,7 @@ $ yarn
 }
 ```
 
-4. Add db.sqlite file to data/ folder in root directory
+4. Add db.sqlite file to `data/` folder in root directory
 
 5. Run the bot.
 
