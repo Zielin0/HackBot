@@ -76,6 +76,11 @@ $ yarn
 
 4. Add db.sqlite file to `data/` folder in root directory
 
+```
+data/
+-- db.sqlite
+```
+
 5. Run the bot.
 
 ```bash
