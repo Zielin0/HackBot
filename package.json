@@ -29,11 +29,6 @@
     "cz-conventional-changelog": "3.3.0",
     "nodemon": "^2.0.13"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn precommit"
-    }
-  },
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "start": "node ./src/index.js"
