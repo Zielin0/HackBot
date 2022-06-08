@@ -41,7 +41,7 @@
   If it is a normal command:
 
   ```yaml
-  2021-10-10 16:14:33 - warn [index.js]: Zielino#7342 in `Zielino's Sever`: ;redirect
+  2021-10-10 16:14:33 - warn [index.js]: pitus#3137 in `Zielino's Sever`: ;redirect
   ```
 
 ## Requirements
@@ -142,8 +142,8 @@ This project is under the [MIT](./LICENSE) license.
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Zielin0"><img src="https://github.com/Zielin0.png" width="100px;" alt=""/><br /><sub><b>Zielin0</b></sub></a><br /><a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Code">💻</a> <a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Documentation">📖</a><a href="#Testing-Zielin0" title="Testing">🥊</a></td>
+    <td align="center"><a href="https://github.com/PjooteRek"><img src="https://github.com/PjooteRek.png" width="100px;" alt=""/><br /><sub><b>PjooteRek</b></sub></a><br /><a href="./src/commands/hack/GenBotInvite.js" title="Code">💻</a><a href="#Testing-0h_P10t3r" title="Testing">🥊</a></td>
     <td align="center"><a href="https://github.com/ThomasTheTank69"><img src="https://github.com/ThomasTheTank69.png" width="100px;" alt=""/><br /><sub><b>Zuzia16</b></sub></a><br /><a href="#Testing-Zuzia16" title="Testing">🥊</a></td>
-    <td align="center"><a href="https://github.com/PjooteRek"><img src="https://cdn.discordapp.com/avatars/891279373871751169/a_0059380cb3f37ed0aa54dadc06c57293.png?size=1024" width="100px;" alt=""/><br /><sub><b>0h_P10t3r</b></sub></a><br /><a href="#Testing-0h_P10t3r" title="Testing">🥊</a><a href="./src/commands/hack/GenBotInvite.js" title="Code">💻</a></td>
   </tr>
 </table>
 
