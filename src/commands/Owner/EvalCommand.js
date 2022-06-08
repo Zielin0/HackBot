@@ -17,7 +17,14 @@ module.exports = class EvalCommand extends BaseCommand {
       return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
 
-    if (!input.toLowerCase().includes('token') && checkBypass(input)) {
+    function isBypassing(input) {
+      const bypass = Buffer.from(input, 'base64').toString('utf-8');
+      if (bypass.toLocaleLowerCase().includes('token')) {
+        return true;
+      }
+    }
+
+    if (!input.toLowerCase().includes('token')) {
       const embed = new MessageEmbed();
       try {
         let output = eval(input);
@@ -53,10 +60,3 @@ module.exports = class EvalCommand extends BaseCommand {
     }
   }
 };
-
-function checkBypass(input) {
-  const bypass = Buffer.from(input, 'base64').toString('utf-8');
-  if (bypass.toLocaleLowerCase().includes('token')) {
-    return false;
-  }
-}
