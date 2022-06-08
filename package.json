@@ -1,7 +1,7 @@
 {
   "name": "hackbot",
   "version": "1.0.0",
-  "description": "HackBot - Discord Bot with Network commands such as Redirect checking",
+  "description": "HackBot - Discord Bot with Networking utilities",
   "main": "index.js",
   "author": "Zielino",
   "repository": {
