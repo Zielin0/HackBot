@@ -151,5 +151,3 @@ This project is under the [MIT](./LICENSE) license.
 ### Others
 
 Feel free to star and fork the repo.
-
-You can also join my discord server [here](https://discord.gg/ckYHKMy).
