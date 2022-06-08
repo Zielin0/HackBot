@@ -17,7 +17,7 @@
 
 ---
 
-### HackBot - Discord Bot with Network utilities
+### HackBot - Discord Bot with Networking utilities
 
 ### Includes
 
