@@ -18,9 +18,9 @@ const client = new Client({
     Intents.FLAGS.GUILD_MESSAGE_TYPING,
     Intents.FLAGS.DIRECT_MESSAGES,
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-    Intents.FLAGS.DIRECT_MESSAGE_TYPING
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
   ],
-  ws: { properties: { $browser: 'Discord iOS' } }
+  ws: { properties: { $browser: 'Discord iOS' } },
 });
 
 global.__basedir = __dirname;
