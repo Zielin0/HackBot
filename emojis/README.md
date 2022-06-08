@@ -32,3 +32,5 @@ Orange: #FFA500
 Yellow: #FFFF1D
 
 Green: #2BFF2B
+
+[Emojis.json](../src/utils/emojis.json)
