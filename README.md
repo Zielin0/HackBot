@@ -23,6 +23,7 @@
 
 <!-- - Small amount of commands (bc I'm lazy) -->
 
+- Fancy & Useful Commands
 - Database
 - Logging
 
