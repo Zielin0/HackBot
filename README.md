@@ -17,7 +17,7 @@
 
 ---
 
-### HackBot - Discord Bot with Network commands such as Redirect checking
+### HackBot - Discord Bot with Network utilities
 
 ### Includes
 
@@ -68,7 +68,7 @@ $ yarn
 ```JSON
 {
   "name": "HackBot",
-  "token": "YOUR_TOKEN",
+  "token": "BOT_TOKEN",
   "prefix": ";",
   "ownerId": "YOUR_ID"
 }
