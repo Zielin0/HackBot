@@ -36,7 +36,7 @@
   If someone tries to use the _ownerOnly_ command:
 
   ```yaml
-  2021-10-10 16:08:54 - warn [index.js]: 0h_P10t3r#3743 in `Zielino's Sever`: Tried to use *ownerOnly* command: ;eval
+  2021-10-10 16:08:54 - warn [index.js]: pitus#3137 in `Zielino's Sever`: Tried to use *ownerOnly* command: ;eval
   ```
 
   If it is a normal command:
@@ -144,7 +144,7 @@ This project is under the [MIT](./LICENSE) license.
   <tr>
     <td align="center"><a href="https://github.com/Zielin0"><img src="https://github.com/Zielin0.png" width="100px;" alt=""/><br /><sub><b>Zielin0</b></sub></a><br /><a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Code">💻</a> <a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Documentation">📖</a><a href="#Testing-Zielin0" title="Testing">🥊</a></td>
     <td align="center"><a href="https://github.com/PjooteRek"><img src="https://github.com/PjooteRek.png" width="100px;" alt=""/><br /><sub><b>PjooteRek</b></sub></a><br /><a href="./src/commands/hack/GenBotInvite.js" title="Code">💻</a><a href="#Testing-0h_P10t3r" title="Testing">🥊</a></td>
-    <td align="center"><a href="https://github.com/ThomasTheTank69"><img src="https://github.com/ThomasTheTank69.png" width="100px;" alt=""/><br /><sub><b>Zuzia16</b></sub></a><br /><a href="#Testing-Zuzia16" title="Testing">🥊</a></td>
+    <td align="center"><a href="https://github.com/ThomasTheTank69"><img src="https://github.com/ThomasTheTank69.png" width="100px;" alt=""/><br /><sub><b>ThomasTheTank69</b></sub></a><br /><a href="#Testing-ThomasTheTank69" title="Testing">🥊</a></td>
   </tr>
 </table>
 
