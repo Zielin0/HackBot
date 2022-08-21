@@ -145,4 +145,5 @@ This project is under the [MIT](./LICENSE) license.
 ### Others
 
 Feel free to star and fork the repo.
+
 Also join my [discord server](https://dc.siurasowo.tk)
