@@ -1,6 +1,17 @@
 const Database = require('better-sqlite3');
+const fs = require('fs');
+const logger = require('../utils/logger');
 
-const db = new Database(`${process.cwd()}/data/db.sqlite`);
+const dataDir = `${process.cwd()}/data`;
+
+if (!fs.existsSync(dataDir)) {
+  logger.debug('Creating `DATA` directory for database.');
+  fs.mkdir(dataDir, err => {
+    if (err) console.log(err);
+  });
+}
+
+const db = new Database(`${dataDir}/db.sqlite`);
 
 db.pragma('synchronous = 1');
 
