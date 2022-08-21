@@ -4,7 +4,7 @@ const emojis = require('../../utils/emojis.json');
 
 module.exports = class NeofetchCommand extends BaseCommand {
   constructor() {
-    super('neofetch', 'Owner', [], true);
+    super('neofetch', 'Owner', ['nf'], true);
   }
 
   run(client, message, args) {

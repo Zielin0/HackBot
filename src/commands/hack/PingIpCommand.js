@@ -8,7 +8,7 @@ const regex = new RegExp(expression);
 
 module.exports = class PingIpCommand extends BaseCommand {
   constructor() {
-    super('ping-ip', 'Hack', ['pingip', 'pip']);
+    super('ping-ip', 'Hack', ['pingip', 'pip', 'ping']);
   }
 
   async run(_client, message, args) {
