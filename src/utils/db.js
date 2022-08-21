@@ -1,6 +1,6 @@
-const Database = require('better-sqlite3')
+const Database = require('better-sqlite3');
 
-const db = new Database(`${process.cwd()  }/data/db.sqlite`);
+const db = new Database(`${process.cwd()}/data/db.sqlite`);
 
 db.pragma('synchronous = 1');
 
@@ -16,7 +16,7 @@ db.prepare(
     guild_name TEXT,
     is_banned BOOLEAN NOT NULL DEFAULT 0
   )
-  `,
+  `
 ).run();
 
 /**
@@ -30,7 +30,7 @@ db.prepare(
     user_discriminator TEXT,
     is_gbanned BOOLEAN NOT NULL DEFAULT 0
   )
-  `,
+  `
 ).run();
 
 // Bot settings table

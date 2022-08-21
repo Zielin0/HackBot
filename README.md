@@ -17,12 +17,13 @@
 
 ---
 
-### HackBot - Discord Bot with Network commands such as Redirect checking
+### HackBot - Discord Bot with Networking utilities
 
 ### Includes
 
 <!-- - Small amount of commands (bc I'm lazy) -->
 
+- Fancy & Useful Commands
 - Database
 - Logging
 
@@ -35,13 +36,13 @@
   If someone tries to use the _ownerOnly_ command:
 
   ```yaml
-  2021-10-10 16:08:54 - warn [index.js]: 0h_P10t3r#3743 in `Zielino's Sever`: Tried to use *ownerOnly* command: ;eval
+  2021-10-10 16:08:54 - warn [index.js]: pitus#3137 in `Zielino's Sever`: Tried to use *ownerOnly* command: ;eval
   ```
 
   If it is a normal command:
 
   ```yaml
-  2021-10-10 16:14:33 - warn [index.js]: Zielino#7342 in `Zielino's Sever`: ;redirect
+  2021-10-10 16:14:33 - warn [index.js]: pitus#3137 in `Zielino's Sever`: ;redirect
   ```
 
 ## Requirements
@@ -68,7 +69,7 @@ $ yarn
 ```JSON
 {
   "name": "HackBot",
-  "token": "YOUR_TOKEN",
+  "token": "BOT_TOKEN",
   "prefix": ";",
   "ownerId": "YOUR_ID"
 }
@@ -120,7 +121,7 @@ This project is under the [MIT](./LICENSE) license.
 - [x] ~~_Emojis_~~
 - [x] ~~_Implementing ownerOnly property for commands_~~ [28-09-2021]
 - [x] ~~_Implementing Database (better-sqlite3)_~~ [30-09-2021]
-- [x] ~~_Owne Commands_~~ [12-10-2021]
+- [x] ~~_Owner Commands_~~ [12-10-2021]
   - [x] ~~_Eval_~~ [28-09-2021]
   - [x] ~~_Shutdown_~~ [28-09-2021]
   - [x] ~~_Servers_~~ [28-09-2021]
@@ -142,13 +143,11 @@ This project is under the [MIT](./LICENSE) license.
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Zielin0"><img src="https://github.com/Zielin0.png" width="100px;" alt=""/><br /><sub><b>Zielin0</b></sub></a><br /><a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Code">💻</a> <a href="https://github.com/Zielin0/HackBot/commits?author=Zielin0" title="Documentation">📖</a><a href="#Testing-Zielin0" title="Testing">🥊</a></td>
-    <td align="center"><a href="https://github.com/ThomasTheTank69"><img src="https://github.com/ThomasTheTank69.png" width="100px;" alt=""/><br /><sub><b>Zuzia16</b></sub></a><br /><a href="#Testing-Zuzia16" title="Testing">🥊</a></td>
-    <td align="center"><a href="https://github.com/PjooteRek"><img src="https://cdn.discordapp.com/avatars/891279373871751169/a_0059380cb3f37ed0aa54dadc06c57293.png?size=1024" width="100px;" alt=""/><br /><sub><b>0h_P10t3r</b></sub></a><br /><a href="#Testing-0h_P10t3r" title="Testing">🥊</a><a href="./src/commands/hack/GenBotInvite.js" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/PjooteRek"><img src="https://github.com/PjooteRek.png" width="100px;" alt=""/><br /><sub><b>PjooteRek</b></sub></a><br /><a href="./src/commands/hack/GenBotInvite.js" title="Code">💻</a><a href="#Testing-0h_P10t3r" title="Testing">🥊</a></td>
+    <td align="center"><a href="https://github.com/ThomasTheTank69"><img src="https://github.com/ThomasTheTank69.png" width="100px;" alt=""/><br /><sub><b>ThomasTheTank69</b></sub></a><br /><a href="#Testing-ThomasTheTank69" title="Testing">🥊</a></td>
   </tr>
 </table>
 
 ### Others
 
 Feel free to star and fork the repo.
-
-You can also join my discord server [here](https://discord.gg/ckYHKMy).
