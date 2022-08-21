@@ -48,6 +48,7 @@
 ## Requirements
 
 - Node.js v16.11.0 or higher (Node.js v16.11.x should work as well)
+
 - Yarn v1.22.15 or higher (Yarn v1.22.x should work as well)
 
 ## Installing & running
@@ -75,14 +76,7 @@ $ yarn
 }
 ```
 
-4. Add db.sqlite file to `data/` folder in root directory
-
-```
-data/
--- db.sqlite
-```
-
-5. Run the bot.
+4. Run the bot.
 
 ```bash
 $ yarn start
