@@ -50,7 +50,7 @@ module.exports = class MessageEvent extends BaseEvent {
           `
 	        HackBot - Discord Bot with Networking utilities\n
           **Links:
-          [Support](https://dc.siurasowo.tk) | [Invite](https://discord.com/api/oauth2/authorize?client_id=886585147573555210&permissions=403008599&scope=bot)**
+          [Support](https://dc.siurasowo.tk) | [Invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=403008599&scope=bot)**
         `
         )
         .setColor(0x2f3136);
