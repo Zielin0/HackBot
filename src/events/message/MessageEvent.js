@@ -48,9 +48,9 @@ module.exports = class MessageEvent extends BaseEvent {
         .setThumbnail(client.user.displayAvatarURL({ size: 512 }))
         .setDescription(
           `
-	  HackBot - Discord Bot with Network commands such as Redirect checking\n
+	        HackBot - Discord Bot with Networking utilities\n
           **Links:
-          [Support](https://discord.gg/upmNHg5U) | [Invite](https://discord.com/api/oauth2/authorize?client_id=886585147573555210&permissions=403008599&scope=bot)**
+          [Support](https://dc.siurasowo.tk) | [Invite](https://discord.com/api/oauth2/authorize?client_id=886585147573555210&permissions=403008599&scope=bot)**
         `
         )
         .setColor(0x2f3136);
