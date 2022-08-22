@@ -100,8 +100,8 @@ No known issues at the moment.
 | Servers      | Owner    | ;servers                | ;servers                             |
 | Shutdown     | Owner    | ;shutdown               | ;shutdown                            |
 | UnGuildBan   | Owner    | ;unguildban [`guildId`] | ;unguildban 694865553835163648       |
-| Whois        | Hack     | ;whois [`domain`]       | ;whois zielinus.gq                   |
-| Redirect     | Hack     | ;redirect [`url`]       | ;redirect https://dc.zielinus.gq     |
+| Whois        | Hack     | ;whois [`domain`]       | ;whois siurasowo.tk                  |
+| Redirect     | Hack     | ;redirect [`url`]       | ;redirect https://siurasowo.tk       |
 | PingIp       | Hack     | ;pingip [`ip`]          | ;pingip 8.8.8.8                      |
 | GenBotInvite | Hack     | ;genbotinvite [`botId`] | ;genbotinvite 886585147573555210     |
 
