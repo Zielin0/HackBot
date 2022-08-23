@@ -1,6 +1,7 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const { MessageEmbed } = require('discord.js');
 const whoiser = require('whoiser');
+const moment = require('moment');
 
 const expression =
   /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})$/;
@@ -29,24 +30,126 @@ module.exports = class WhoisCommand extends BaseCommand {
       return message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
     try {
-      const domaininfo = await whoiser(input);
-      const info = domaininfo[Object.keys(domaininfo)[0]];
-      // console.log(info.text.join('\n').toString())
-      const embed = new MessageEmbed()
-        .setTitle('Whois lookup')
-        .setDescription(
-          info.text.join('\n').toString().length > 1024
-            ? 'Too large to display'
-            : info.text.join('\n').toString()
-        )
-        .setColor(0x2f3136);
-      message.channel.send({ embeds: [embed] });
+      const domainJSON = await whoiser(input);
+      const domainInfo = domainJSON[Object.keys(domainJSON)[0]];
+
+      let embed = new MessageEmbed().setTitle('🧭 Whois Lookup').setColor(0x2f3136);
+      const domainInfoText = domainInfo.text.join('\n').toString();
+
+      if (domainInfoText.toLowerCase().startsWith('no match for')) {
+        const embed = new MessageEmbed()
+          .setTitle('🧭 Whois Lookup')
+          .setColor(0x2f3136)
+          .setDescription(`❗ No match for **${input}**`);
+        message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+        return;
+      }
+
+      if (domainInfoText.length <= 200) {
+        const embed = new MessageEmbed()
+          .setTitle('🧭 Whois Lookup')
+          .setColor(0x2f3136)
+          .setDescription(domainInfoText);
+        message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+        return;
+      }
+
+      if (domainInfoText.toLowerCase().startsWith('request limit exceeded')) {
+        const embed = new MessageEmbed()
+          .setTitle('🧭 Whois Lookup')
+          .setColor(0x2f3136)
+          .setDescription('❗ Request limit exceeded.');
+        message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+        return;
+      }
+
+      // TODO: Move capitalization and parsing us phone number to another utils file as function
+      // Domain
+      const domainNameRaw = domainInfo['Domain Name'].toLowerCase();
+      const domainName = domainNameRaw.charAt(0).toUpperCase() + domainNameRaw.slice(1);
+      // Registrar
+      const domainRegistrar = domainInfo.Registrar;
+      const registrarURL = domainInfo['Registrar URL'];
+      const registrarInfo = `${domainRegistrar}\n${registrarURL}`;
+      // Abuse email & phone number
+      const abuseEmail = domainInfo['Registrar Abuse Contact Email'];
+      let abusePhone;
+
+      if ('Registrar Abuse Contact Phone' in domainInfo) {
+        if (domainInfo['Registrar Abuse Contact Phone'].startsWith('+1')) {
+          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'].replace('.', ' ');
+          const abusePhoneDirect = abusePhoneRaw.substring(0, 2);
+          const abusePhoneAreaCode = abusePhoneRaw.substring(3, 6);
+          const abusePhonePrefix = abusePhoneRaw.substring(6, 9);
+          const abusePhoneRest = abusePhoneRaw.substring(9, 13);
+
+          abusePhone = `${abusePhoneDirect} (${abusePhoneAreaCode}) ${abusePhonePrefix}-${abusePhoneRest}`;
+        } else if (domainInfo['Registrar Abuse Contact Phone'].length === 10) {
+          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'];
+          const abusePhoneAreaCode = abusePhoneRaw.substring(0, 3);
+          const abusePhonePrefix = abusePhoneRaw.substring(3, 6);
+          const abusePhoneRest = abusePhoneRaw.substring(6, 10);
+
+          abusePhone = `(${abusePhoneAreaCode}) ${abusePhonePrefix}-${abusePhoneRest}`;
+        } else if (domainInfo['Registrar Abuse Contact Phone'].length === 9) {
+          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'];
+          const abusePhoneAreaCode = abusePhoneRaw.substring(0, 3);
+          const abusePhonePrefix = abusePhoneRaw.substring(3, 6);
+          const abusePhoneRest = abusePhoneRaw.substring(6, 9);
+
+          abusePhone = `${abusePhoneAreaCode} ${abusePhonePrefix} ${abusePhoneRest}`;
+        } else {
+          abusePhone = domainInfo['Registrar Abuse Contact Phone'];
+        }
+      } else {
+        abusePhone = 'Not provided.';
+      }
+
+      // Dates
+      const dateTimeFormat = 'YYYY-MM-DD';
+      const createdDate = moment(domainInfo['Created Date'], dateTimeFormat)
+        .toDate()
+        .toLocaleDateString()
+        .replaceAll('.', '-');
+
+      const expiryDate = moment(domainInfo['Expiry Date'], dateTimeFormat)
+        .toDate()
+        .toLocaleDateString()
+        .replaceAll('.', '-');
+
+      const updatedDate = moment(domainInfo['Updated Date'], dateTimeFormat)
+        .toDate()
+        .toLocaleDateString()
+        .replaceAll('.', '-');
+
+      // status
+      let statusList = '';
+      domainInfo['Domain Status'].forEach(status => {
+        statusList += status.split(' ')[0] + '\n';
+      });
+
+      // name servers
+      let nameServerList = '';
+      domainInfo['Name Server'].forEach(nameserver => {
+        nameServerList += nameserver.toLowerCase() + '\n';
+      });
+
+      embed
+        .setDescription(`__**${domainName}**__`)
+        .addField('Registrar', registrarInfo)
+        .addField('Abuse Contact', `Abuse Phone: ${abusePhone}\nAbuse Email: ${abuseEmail}`)
+        .addField('Created On', createdDate, true)
+        .addField('Expires On', expiryDate, true)
+        .addField('Updated On', updatedDate, true)
+        .addField('Domain Status', statusList)
+        .addField('Name Server(s)', nameServerList);
+
+      message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     } catch (error) {
       const embed = new MessageEmbed()
-        .setTitle('❗ Failed to lookup domain')
+        .setTitle('❗ Failed to lookup a domain')
         .addField('Error message', error.message)
         .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``);
-      message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
   }
 };
