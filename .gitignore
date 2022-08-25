@@ -2,7 +2,9 @@
 node_modules/
 yarn.lock
 yarn-error.log
+package-lock.json
 data/
 images/
 logs/
 config.json
+temp.md
