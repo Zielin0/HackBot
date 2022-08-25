@@ -150,6 +150,7 @@ module.exports = class WhoisCommand extends BaseCommand {
         .setTitle('❗ Failed to lookup a domain')
         .addField('Error message', error.message)
         .addField('Stack', `\`\`\`js\n${error.stack}\`\`\``);
+      message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
     }
   }
 };
