@@ -1,5 +1,5 @@
 /**
- *  @type {AUTHOR} - 0h_P10t3r#3743
+ *  @type {AUTHOR} - https://github.com/PjooteRek
  */
 
 const { MessageEmbed } = require('discord.js');
