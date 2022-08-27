@@ -63,10 +63,8 @@ module.exports = class WhoisCommand extends BaseCommand {
         return;
       }
 
-      // TODO: Move capitalization and parsing us phone number to another utils file as function
       // Domain
-      const domainNameRaw = domainInfo['Domain Name'].toLowerCase();
-      const domainName = domainNameRaw.charAt(0).toUpperCase() + domainNameRaw.slice(1);
+      const domainName = this.capitalize(domainInfo['Domain Name']);
       // Registrar
       const domainRegistrar = domainInfo.Registrar;
       const registrarURL = domainInfo['Registrar URL'];
@@ -76,31 +74,7 @@ module.exports = class WhoisCommand extends BaseCommand {
       let abusePhone;
 
       if ('Registrar Abuse Contact Phone' in domainInfo) {
-        if (domainInfo['Registrar Abuse Contact Phone'].startsWith('+1')) {
-          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'].replace('.', ' ');
-          const abusePhoneDirect = abusePhoneRaw.substring(0, 2);
-          const abusePhoneAreaCode = abusePhoneRaw.substring(3, 6);
-          const abusePhonePrefix = abusePhoneRaw.substring(6, 9);
-          const abusePhoneRest = abusePhoneRaw.substring(9, 13);
-
-          abusePhone = `${abusePhoneDirect} (${abusePhoneAreaCode}) ${abusePhonePrefix}-${abusePhoneRest}`;
-        } else if (domainInfo['Registrar Abuse Contact Phone'].length === 10) {
-          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'];
-          const abusePhoneAreaCode = abusePhoneRaw.substring(0, 3);
-          const abusePhonePrefix = abusePhoneRaw.substring(3, 6);
-          const abusePhoneRest = abusePhoneRaw.substring(6, 10);
-
-          abusePhone = `(${abusePhoneAreaCode}) ${abusePhonePrefix}-${abusePhoneRest}`;
-        } else if (domainInfo['Registrar Abuse Contact Phone'].length === 9) {
-          const abusePhoneRaw = domainInfo['Registrar Abuse Contact Phone'];
-          const abusePhoneAreaCode = abusePhoneRaw.substring(0, 3);
-          const abusePhonePrefix = abusePhoneRaw.substring(3, 6);
-          const abusePhoneRest = abusePhoneRaw.substring(6, 9);
-
-          abusePhone = `${abusePhoneAreaCode} ${abusePhonePrefix} ${abusePhoneRest}`;
-        } else {
-          abusePhone = domainInfo['Registrar Abuse Contact Phone'];
-        }
+        abusePhone = this.parsePhoneNumber(domainInfo['Registrar Abuse Contact Phone']);
       } else {
         abusePhone = 'Not provided.';
       }
