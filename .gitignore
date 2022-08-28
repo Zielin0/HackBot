@@ -1,10 +1,46 @@
-# Ignore list for HackBot project
+#     --------------------------------
+# GitIgnore file for all Zielino's projects
+#     --------------------------------
+
+# Node Modules
 node_modules/
-yarn.lock
-yarn-error.log
+
+# Lock files
+*.lock
 package-lock.json
+
+# .vscode folder
+.vscode/
+
+# Data folder
 data/
-images/
+
+# Databases
+*.sqlite
+*.db
+db.*
+
+# Configs
+config.*
+
+# ENV files
+*.env
+
+# Temp files
+temp*
+
+# Logs
 logs/
-config.json
-temp.md
+*.log
+
+# Build folders
+dist/
+build/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Images
+images/
