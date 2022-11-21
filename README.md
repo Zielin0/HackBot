@@ -19,6 +19,8 @@
 
 ### HackBot - Discord Bot with Networking utilities
 
+#### HackBot is on outdated version of discord.js, and project is discontinued.
+
 ### Includes
 
 <!-- - Small amount of commands (bc I'm lazy) -->
