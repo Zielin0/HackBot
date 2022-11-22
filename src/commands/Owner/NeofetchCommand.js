@@ -16,7 +16,7 @@ module.exports = class NeofetchCommand extends BaseCommand {
       system: 'model, version',
       time: 'uptime',
       graphics: 'displays, controllers',
-      cpu: 'manufacturer, brand, cores, speedMax',
+      cpu: 'manufacturer, brand, cores, speed',
       mem: 'total, used',
     }).then(data => {
       const header = `${data.users[0].user}@${data.osInfo.hostname}`;
@@ -33,10 +33,12 @@ module.exports = class NeofetchCommand extends BaseCommand {
         // host
         `${emojis.host} ${emojis.arrow} ${data.system.model}\n` +
         // cpu
-        `${emojis.cpu} ${emojis.arrow} ${data.cpu.brand} (${data.cpu.cores}) @ ${data.cpu.speedMax}GHz\n` +
+        `${emojis.cpu} ${emojis.arrow} ${data.cpu.brand} (${data.cpu.cores}) @ ${data.cpu.speed}GHz\n` +
         // gpu
-        `${emojis.gpu} ${emojis.arrow} ${firstController[Object.keys(firstController)[0]]} ${
-          firstController[Object.keys(firstController)[1]]
+        `${emojis.gpu} ${emojis.arrow} ${
+          firstController[Object.keys(firstController)[1]] ?
+          firstController[Object.keys(firstController)[1]] :
+          'Unknown'
         }\n` +
         // memory usage
         `${emojis.memory} ${emojis.arrow} ${Math.floor(memoryUsed)}MiB / ${Math.floor(
@@ -44,7 +46,7 @@ module.exports = class NeofetchCommand extends BaseCommand {
         )}MiB (${Math.round((memoryUsed * 100) / memoryTotal)}%)\n` +
         // resolution
         `${emojis.resolution} ${emojis.arrow} ${data.graphics.displays
-          .map(x => `${x.resolutionX}x${x.resolutionY}`)
+          .map(x => `${x.currentResX}x${x.currentResY}`)
           .join(', ')}`;
 
       const softwareInfo =
